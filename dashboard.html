@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Dashboard App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Dashboard</h2>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-page="dashboard-content">
+                        <a href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li data-page="charts-content">
+                        <a href="#"><i class="fas fa-chart-line"></i> <span>Charts</span></a>
+                    </li>
+                    <li data-page="contacts-content">
+                        <a href="#"><i class="fas fa-address-book"></i> <span>Contacts</span></a>
+                    </li>
+                    <li data-page="sales-content">
+                        <a href="#"><i class="fas fa-shopping-cart"></i> <span>Sales</span></a>
+                    </li>
+                    <li data-page="analysis-content">
+                        <a href="#"><i class="fas fa-chart-pie"></i> <span>Analysis</span></a>
+                    </li>
+                    <li data-page="settings-content">
+                        <a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="search-container">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="dropdown">
+                        <button class="profile-btn">
+                            <img src="https://via.placeholder.com/40" alt="Profile">
+                            <span>John Doe</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-user"></i> Profile</a>
+                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard Content -->
+                <section id="dashboard-content" class="content-section active">
+                    <h1>Dashboard Overview</h1>
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Users</h3>
+                                <p>1,254</p>
+                                <span class="trend up">+12% <i class="fas fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Sales</h3>
+                                <p>$45,675</p>
+                                <span class="trend up">+8% <i class="fas fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Revenue</h3>
+                                <p>$21,345</p>
+                                <span class="trend up">+5% <i class="fas fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Tickets</h3>
+                                <p>43</p>
+                                <span class="trend down">-2% <i class="fas fa-arrow-down"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-card">
+                            <h3>Sales Overview</h3>
+                            <div class="chart" id="sales-chart">
+                                <!-- Chart will be rendered here by JS -->
+                                <div class="placeholder-chart">
+                                    <div class="bar" style="height: 60%;"></div>
+                                    <div class="bar" style="height: 80%;"></div>
+                                    <div class="bar" style="height: 40%;"></div>
+                                    <div class="bar" style="height: 70%;"></div>
+                                    <div class="bar" style="height: 65%;"></div>
+                                    <div class="bar" style="height: 85%;"></div>
+                                    <div class="bar" style="height: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>User Activity</h3>
+                            <div class="chart" id="users-chart">
+                                <!-- Chart will be rendered here by JS -->
+                                <div class="placeholder-chart donut">
+                                    <div class="donut-segment" style="--percentage: 45%; --color: #4361ee;"></div>
+                                    <div class="donut-segment" style="--percentage: 30%; --color: #3a0ca3;"></div>
+                                    <div class="donut-segment" style="--percentage: 25%; --color: #7209b7;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon blue">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New User Registered</h4>
+                                    <p>Jane Smith just created a new account</p>
+                                    <span class="activity-time">2 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon green">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New Order</h4>
+                                    <p>Customer #1234 placed an order for $156</p>
+                                    <span class="activity-time">15 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon orange">
+                                    <i class="fas fa-ticket-alt"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New Support Ticket</h4>
+                                    <p>Ticket #4321 has been opened by Mark Johnson</p>
+                                    <span class="activity-time">1 hour ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Charts Content -->
+                <section id="charts-content" class="content-section">
+                    <h1>Charts & Analytics</h1>
+                    <div class="charts-grid">
+                        <div class="chart-card full-width">
+                            <h3>Revenue Trends</h3>
+                            <div class="chart large-chart">
+                                <div class="placeholder-chart">
+                                    <div class="line-chart">
+                                        <svg viewBox="0 0 500 200" class="chart-svg">
+                                            <polyline
+                                                fill="none"
+                                                stroke="#4361ee"
+                                                stroke-width="3"
+                                                points="
+                                                0,120
+                                                100,60
+                                                150,80
+                                                200,20
+                                                250,40
+                                                300,20
+                                                350,60
+                                                400,40
+                                                450,30
+                                                500,10
+                                                "
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Sales by Category</h3>
+                            <div class="chart">
+                                <div class="placeholder-chart donut">
+                                    <div class="donut-segment" style="--percentage: 35%; --color: #4361ee;"></div>
+                                    <div class="donut-segment" style="--percentage: 25%; --color: #3a0ca3;"></div>
+                                    <div class="donut-segment" style="--percentage: 20%; --color: #7209b7;"></div>
+                                    <div class="donut-segment" style="--percentage: 20%; --color: #f72585;"></div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #4361ee;"></span>
+                                    <span>Electronics (35%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #3a0ca3;"></span>
+                                    <span>Clothing (25%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #7209b7;"></span>
+                                    <span>Home & Kitchen (20%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #f72585;"></span>
+                                    <span>Other (20%)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Monthly Traffic</h3>
+                            <div class="chart">
+                                <div class="placeholder-chart">
+                                    <div class="bar" style="height: 60%;"></div>
+                                    <div class="bar" style="height: 80%;"></div>
+                                    <div class="bar" style="height: 40%;"></div>
+                                    <div class="bar" style="height: 70%;"></div>
+                                    <div class="bar" style="height: 65%;"></div>
+                                    <div class="bar" style="height: 85%;"></div>
+                                    <div class="bar" style="height: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contacts Content -->
+                <section id="contacts-content" class="content-section">
+                    <h1>Contacts</h1>
+                    <div class="contacts-header">
+                        <div class="search-container">
+                            <input type="text" placeholder="Search contacts...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <button class="btn btn-primary"><i class="fas fa-plus"></i> Add Contact</button>
+                    </div>
+                    <div class="contacts-list">
+                        <div class="contact-card">
+                            <img src="https://via.placeholder.com/60" alt="Contact">
+                            <div class="contact-info">
+                                <h3>John Smith</h3>
+                                <p>CEO, ABC Company</p>
+                                <div class="contact-details">
+                                    <span><i class="fas fa-envelope"></i> john@example.com</span>
+                                    <span><i class="fas fa-phone"></i> (123) 456-7890</span>
+                                </div>
+                            </div>
+                            <div class="contact-actions">
+                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <img src="https://via.placeholder.com/60" alt="Contact">
+                            <div class="contact-info">
+                                <h3>Sarah Johnson</h3>
+                                <p>Marketing Director, XYZ Inc</p>
+                                <div class="contact-details">
+                                    <span><i class="fas fa-envelope"></i> sarah@example.com</span>
+                                    <span><i class="fas fa-phone"></i> (123) 456-7891</span>
+                                </div>
+                            </div>
+                            <div class="contact-actions">
+                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <img src="https://via.placeholder.com/60" alt="Contact">
+                            <div class="contact-info">
+                                <h3>Michael Brown</h3>
+                                <p>Sales Manager, 123 Corp</p>
+                                <div class="contact-details">
+                                    <span><i class="fas fa-envelope"></i> michael@example.com</span>
+                                    <span><i class="fas fa-phone"></i> (123) 456-7892</span>
+                                </div>
+                            </div>
+                            <div class="contact-actions">
+                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <img src="https://via.placeholder.com/60" alt="Contact">
+                            <div class="contact-info">
+                                <h3>Emily Davis</h3>
+                                <p>Product Manager, Tech Solutions</p>
+                                <div class="contact-details">
+                                    <span><i class="fas fa-envelope"></i> emily@example.com</span>
+                                    <span><i class="fas fa-phone"></i> (123) 456-7893</span>
+                                </div>
+                            </div>
+                            <div class="contact-actions">
+                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                <button class="btn-icon"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sales Content -->
+                <section id="sales-content" class="content-section">
+                    <h1>Sales Dashboard</h1>
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Total Sales</h3>
+                                <p>$45,675</p>
+                                <span class="trend up">+8% <i class="fas fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>New Customers</h3>
+                                <p>156</p>
+                                <span class="trend up">+12% <i class="fas fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Products Sold</h3>
+                                <p>432</p>
+                                <span class="trend up">+5% <i class="fas fa-arrow-up"></i></span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red">
+                                <i class="fas fa-undo"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Returns</h3>
+                                <p>12</p>
+                                <span class="trend down">-2% <i class="fas fa-arrow-down"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sales-table-container">
+                        <h3>Recent Orders</h3>
+                        <table class="sales-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-001</td>
+                                    <td>John Smith</td>
+                                    <td>2023-06-15</td>
+                                    <td>$156.00</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-002</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>2023-06-14</td>
+                                    <td>$243.50</td>
+                                    <td><span class="status processing">Processing</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-003</td>
+                                    <td>Michael Brown</td>
+                                    <td>2023-06-14</td>
+                                    <td>$78.25</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-004</td>
+                                    <td>Emily Davis</td>
+                                    <td>2023-06-13</td>
+                                    <td>$325.00</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-005</td>
+                                    <td>Robert Wilson</td>
+                                    <td>2023-06-12</td>
+                                    <td>$145.75</td>
+                                    <td><span class="status cancelled">Cancelled</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Analysis Content -->
+                <section id="analysis-content" class="content-section">
+                    <h1>Data Analysis</h1>
+                    <div class="analysis-grid">
+                        <div class="analysis-card full-width">
+                            <h3>Performance Metrics</h3>
+                            <div class="metrics-container">
+                                <div class="metric">
+                                    <div class="metric-value">87%</div>
+                                    <div class="metric-label">Customer Satisfaction</div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">92%</div>
+                                    <div class="metric-label">On-time Delivery</div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 92%;"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">76%</div>
+                                    <div class="metric-label">Conversion Rate</div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 76%;"></div>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">95%</div>
+                                    <div class="metric-label">Product Quality</div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <h3>Regional Sales</h3>
+                            <div class="chart">
+                                <div class="placeholder-chart">
+                                    <div class="bar" style="height: 60%;"></div>
+                                    <div class="bar" style="height: 80%;"></div>
+                                    <div class="bar" style="height: 40%;"></div>
+                                    <div class="bar" style="height: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #4361ee;"></span>
+                                    <span>North America</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #3a0ca3;"></span>
+                                    <span>Europe</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #7209b7;"></span>
+                                    <span>Asia</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #f72585;"></span>
+                                    <span>Other</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <h3>Customer Demographics</h3>
+                            <div class="chart">
+                                <div class="placeholder-chart donut">
+                                    <div class="donut-segment" style="--percentage: 28%; --color: #4361ee;"></div>
+                                    <div class="donut-segment" style="--percentage: 32%; --color: #3a0ca3;"></div>
+                                    <div class="donut-segment" style="--percentage: 25%; --color: #7209b7;"></div>
+                                    <div class="donut-segment" style="--percentage: 15%; --color: #f72585;"></div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #4361ee;"></span>
+                                    <span>18-24 (28%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #3a0ca3;"></span>
+                                    <span>25-34 (32%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #7209b7;"></span>
+                                    <span>35-44 (25%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background-color: #f72585;"></span>
+                                    <span>45+ (15%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Content -->
+                <section id="settings-content" class="content-section">
+                    <h1>Settings</h1>
+                    <div class="settings-container">
+                        <div class="settings-sidebar">
+                            <ul>
+                                <li class="active"><a href="#account">Account Settings</a></li>
+                                <li><a href="#notifications">Notifications</a></li>
+                                <li><a href="#security">Security</a></li>
+                                <li><a href="#appearance">Appearance</a></li>
+                            </ul>
+                        </div>
+                        <div class="settings-content">
+                            <div id="account" class="settings-section active">
+                                <h2>Account Settings</h2>
+                                <form class="settings-form">
+                                    <div class="form-group">
+                                        <label for="profile-name">Full Name</label>
+                                        <input type="text" id="profile-name" value="John Doe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-email">Email</label>
+                                        <input type="email" id="profile-email" value="john@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-phone">Phone</label>
+                                        <input type="tel" id="profile-phone" value="(123) 456-7890">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-bio">Bio</label>
+                                        <textarea id="profile-bio" rows="4">Product manager with 5+ years of experience in SaaS products.</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+
